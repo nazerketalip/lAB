@@ -1,86 +1,17 @@
-movies = [
-{
-"name": "Usual Suspects",
-"imdb": 7.0,
-"category": "Thriller"
-},
-{
-"name": "Hitman",
-"imdb": 6.3,
-"category": "Action"
-},
-{
-"name": "Dark Knight",
-"imdb": 9.0,
-"category": "Adventure"
-},
-{
-"name": "The Help",
-"imdb": 8.0,
-"category": "Drama"
-},
-{
-"name": "The Choice",
-"imdb": 6.2,
-"category": "Romance"
-},
-{
-"name": "Colonia",
-"imdb": 7.4,
-"category": "Romance"
-},
-{
-"name": "Love",
-"imdb": 6.0,
-"category": "Romance"
-},
-{
-"name": "Bride Wars",
-"imdb": 5.4,
-"category": "Romance"
-},
-{
-"name": "AlphaJet",
-"imdb": 3.2,
-"category": "War"
-},
-{
-"name": "Ringing Crime",
-"imdb": 4.0,
-"category": "Crime"
-},
-{
-"name": "Joking muck",
-"imdb": 7.2,
-"category": "Comedy"
-},
-{
-"name": "What is the name",
-"imdb": 9.2,
-"category": "Suspense"
-},
-{
-"name": "Detective",
-"imdb": 7.0,
-"category": "Suspense"
-},
-{
-"name": "Exam",
-"imdb": 4.2,
-"category": "Thriller"
-},
-{
-"name": "We Two",
-"imdb": 7.2,
-"category": "Romance"
-}
-]
-def result(movies):
-    sum = 0
-    total=len(movies)
-    for i in movies:
-        sum = sum+i['imdb']
-    sum = sum/total
-    return sum
+def filter_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, n):
+        if n % i == 0:
+            return False
+    return True
 
-print(result(movies))
+
+lst = []
+lst1 = []
+a = int(input())
+for i in range(a):
+    x = int(input())
+    if filter_prime(x) == True:
+        lst1.append(x)
+print(lst1)
