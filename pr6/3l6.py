@@ -2,7 +2,7 @@ n, m, x, y = 0, 0, 0, 0
 s = input()
 specialchar = "~`!@#$%^&*()_-+=\|?/.,<>"
 digits = "1234567890"
-if (len(s) >= 8):
+if (len(s) >= 8 and len(s)<=15):
     for i in s:
         if i == i.lower():
             n += 1
