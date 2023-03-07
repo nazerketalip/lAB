@@ -1,5 +1,4 @@
-import string
-for letter in string.ascii_uppercase:
-    name = letter + ".txt"
-    with open(name, "w") as file:
-        print( name)
+l = input().split()
+with open("testing.txt", "w") as file:
+    for i in l:
+        file.write(i + "\n")
