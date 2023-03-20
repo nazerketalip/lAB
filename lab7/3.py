@@ -1,22 +1,44 @@
 import pygame
+
 pygame.init()
 
-monitor = pygame.display.set_mode((500, 500 ))
-pygame.display.set_caption("TSIS7")
-check = True
-while check:
-    #monitor.fill(177,252,3)
-    pygame.draw.circle(monitor, 'White', (50, 50), 25)
-    """
-    pygame.draw.circle(monitor, 'Red', (100, 50), 25)
-    pygame.draw.circle(monitor, 'Blue', (150, 50), 25)
-    pygame.draw.circle(monitor, 'Green', (200, 50), 25)
-    pygame.draw.circle(monitor, 'Purple', (250, 50), 25)
-    pygame.draw.circle(monitor, 'Orange', (300, 50), 25)
-    pygame.draw.circle(monitor, 'Black', (0, 50), 25)
-    """
-    pygame.display.update()
-    for action in pygame.event.get():
-        if action.type == pygame.QUIT:
-            check = False
+screen = pygame.display.set_mode((800,600))
+pygame.display.set_caption('TSIS7')
+
+ball_position = [400, 300]
+speed = 20
+
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
             pygame.quit()
+            quit()
+
+        elif event.type == pygame.KEYDOWN:
+               if event.key == pygame.K_UP:
+                ball_position[1] -= speed
+               elif event.key == pygame.K_DOWN:
+                   ball_position[1] += speed
+               elif event.key == pygame.K_LEFT:
+                   ball_position[0] -= speed
+               elif event.key == pygame.K_RIGHT:
+                   ball_position[0] += speed
+
+    if ball_position[0] - 25 < 0:
+        ball_position[0] = 25
+    elif ball_position[0] + 25 > 800:
+        ball_position[0] = 800 - 25
+    if ball_position[1] - 25 < 0:
+        ball_position[1] = 25
+    elif ball_position[1] + 25 > 600:
+        ball_position[1] = 600 - 25
+
+
+
+    ball_position[0] = max(25, min(800 - 25, ball_position[0]))
+    ball_position[1] = max(25, min(600 - 25, ball_position[1]))
+
+    screen.fill((255, 255, 255))
+    pygame.draw.circle(screen, 'Black', ball_position, 25)
+    pygame.display.update()
